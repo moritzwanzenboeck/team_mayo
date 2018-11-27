@@ -30,7 +30,7 @@ public class Test1 {
 	      motorB.stop();
 	      motorC.stop();
 	      
-	      if(sensor.getAvailableModes()) {
+	      if(sensor.getCurrentMode()==1) {
 	    	  motorB.forward();
 		      motorC.backward();
 		      Delay.msDelay(5000);
