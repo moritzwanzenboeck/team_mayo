@@ -1,5 +1,6 @@
 package test_1;
 
+
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
 import lejos.hardware.port.MotorPort;
@@ -21,5 +22,6 @@ public class Test1 {
 	      motorC.stop();
 	      motorC.close();
 	      System.out.println("Test!icle");
+	      
 	}
 }
