@@ -48,8 +48,7 @@ public class Test1 {
 	      
 	}
 	
-public class ButtonSample {
-	
+
 } 
-}
+
 
