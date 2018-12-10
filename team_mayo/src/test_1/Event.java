@@ -1,5 +1,9 @@
 package test_1;
 
-public class Event {
+import lejos.hardware.sensor.SensorMode;
+
+public class Event extends Test1{
+	
+	
 
 }
