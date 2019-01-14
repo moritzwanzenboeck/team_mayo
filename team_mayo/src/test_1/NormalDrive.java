@@ -25,6 +25,9 @@ public class NormalDrive  extends Thread{
 //			    		
 		    		  Variables.setSpeed(300);
 		    		  Variables.button_pressed = false;
+		    		  Variables.setTimer(System.currentTimeMillis());
+		    		  System.out.println(Variables.getTimer());
+
 
 		    		  try {
 						Thread.sleep(1000);
