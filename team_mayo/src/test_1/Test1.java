@@ -4,8 +4,8 @@ package test_1;
 import java.awt.event.*;
 import java.util.EventListener;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
 
+import lejos.hardware.Button;
 import lejos.hardware.ev3.LocalEV3;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
 import lejos.hardware.motor.EV3MediumRegulatedMotor;
@@ -18,33 +18,44 @@ import lejos.hardware.sensor.SensorModes;
 import lejos.robotics.RegulatedMotor;
 import lejos.robotics.SampleProvider;
 import lejos.utility.Delay;
-import lejos.remote.nxt.*;
 
 public class Test1 {
 	public static void main(String args[]) {
+		
+		MultithreadingTest mtt = new MultithreadingTest();
+		mtt.start();
+		
+	      RegulatedMotor motorA = new EV3MediumRegulatedMotor(MotorPort.A);
 	      RegulatedMotor motorB = new EV3MediumRegulatedMotor(MotorPort.B);
-	      RegulatedMotor motorC = new EV3MediumRegulatedMotor(MotorPort.C);
-	      Port port = LocalEV3.get().getPort("S1");
-	      SensorModes sensor = new EV3TouchSensor(port);
-	      SampleProvider touch = sensor.getMode("Touch");
-	      
-	      
+	      //SensorModes sensor = new EV3TouchSensor(port);
+	      //SampleProvider touch = sensor.getMode("Touch");
 	      
 	      	      
 	      
+	      motorA.setSpeed(250);
 	      motorB.setSpeed(250);
-	      motorC.setSpeed(250);
+	      motorA.forward();
 	      motorB.forward();
-	      motorC.backward();
 	      Delay.msDelay(5000);
+	      motorA.stop();
 	      motorB.stop();
-	      motorC.stop();
 	      
+
+	      if(Variables.button_pressed == true) {
+	    	  motorA.setSpeed(250);
+		      motorB.setSpeed(250);
+		      motorA.forward();
+		      motorB.forward();
+		      Delay.msDelay(5000);
+		      motorA.stop();
+		      motorB.stop();
+		      Variables.button_pressed = false;
+
+	      }
 	      
-	      
+	      motorA.close();
 	      motorB.close();
-	      motorC.close();
-	      System.out.println("Test!icle");
+
 	      
 	}
 	
