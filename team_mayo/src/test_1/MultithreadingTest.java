@@ -11,6 +11,7 @@ public class MultithreadingTest extends Thread {
 		EV3TouchSensor ts = new EV3TouchSensor(SensorPort.S1);
         SensorMode touch = ts.getTouchMode();
         float[] sample = new float[touch.sampleSize()];
+
  
         while (true) {
             ts.fetchSample(sample, 0);
@@ -19,8 +20,9 @@ public class MultithreadingTest extends Thread {
             } catch (InterruptedException e) {
             }
             if (sample[0] == 1 && !Variables.button_pressed) {
-                System.out.println("pressed");
-                Variables.button_pressed = true;
+            	Variables.button_pressed = true;
+            	System.out.println("pressed");
+
             }
         }
 	}

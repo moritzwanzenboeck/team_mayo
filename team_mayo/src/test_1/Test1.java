@@ -24,6 +24,11 @@ public class Test1 {
 		
 		MultithreadingTest mtt = new MultithreadingTest();
 		mtt.start();
+		NormalDrive nd = new NormalDrive();
+		nd.start();
+		DoubleClick dc = new DoubleClick();
+		dc.start();
+		
 		
 	      RegulatedMotor motorA = new EV3MediumRegulatedMotor(MotorPort.A);
 	      RegulatedMotor motorB = new EV3MediumRegulatedMotor(MotorPort.B);
@@ -31,35 +36,26 @@ public class Test1 {
 	      //SampleProvider touch = sensor.getMode("Touch");
 	      
 	      	      
-	      
-	      motorA.setSpeed(250);
-	      motorB.setSpeed(250);
-	      motorA.forward();
-	      motorB.forward();
-	      Delay.msDelay(5000);
-	      motorA.stop();
-	      motorB.stop();
-	      
-
-	      if(Variables.button_pressed == true) {
-	    	  motorA.setSpeed(250);
-		      motorB.setSpeed(250);
+	      while(true) {
+	    	  motorA.setSpeed(Variables.getSpeed());
+		      motorB.setSpeed(Variables.getSpeed());
 		      motorA.forward();
 		      motorB.forward();
-		      Delay.msDelay(5000);
-		      motorA.stop();
-		      motorB.stop();
-		      Variables.button_pressed = false;
-
+		      
 	      }
 	      
-	      motorA.close();
-	      motorB.close();
+	      	      	      
+	      
+	      
 
+		}	      
+	      	      
+	      
+	      
 	      
 	}
 	
 
-} 
+
 
 
