@@ -7,17 +7,8 @@ public class DoubleClick extends Thread{
 	
 		while(true) {
 			if(Variables.button_pressed == true ) {
-				for(int i=0; i < 10; i++ ) {
-					try {
-						Thread.sleep(100);
-						Variables.setTimer(Variables.getTimer()+1);
-						System.out.println(Variables.getTimer());
-					} catch (InterruptedException e) {
-					}
-					
-				}
-				Variables.setTimer(0);
-				
+				Variables.setTimer(System.currentTimeMillis());
+				System.out.println(Variables.getTimer());
 			}
 		}
 	}

@@ -4,7 +4,7 @@ public class Variables {
 	
 	public static boolean button_pressed = false;
 	private static int speed = 250;
-	private static int timer = 0;
+	private static long Timer = 0;
 	
 	
 	public static int getSpeed() {
@@ -13,11 +13,11 @@ public class Variables {
 	public static void setSpeed(int speed) {
 		Variables.speed = speed;
 	}
-	public static int getTimer() {
-		return timer;
+	public static long getTimer() {
+		return Timer;
 	}
-	public static void setTimer(int timer) {
-		Variables.timer = timer;
+	public static void setTimer(long timer) {
+		Timer = timer;
 	}
-
+	
 }
