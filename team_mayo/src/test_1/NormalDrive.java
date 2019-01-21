@@ -14,6 +14,24 @@ public class NormalDrive  extends Thread{
 			while (true) {
 		    	  if(Variables.button_pressed == true) {
 		    		  
+		    		  Variables.setTimer2(System.currentTimeMillis());
+		    		  if(Variables.getTimer1() + 250 > Variables.getTimer2()) {
+		    			  
+		    			  
+		    			  System.out.println("Test");
+//		    			  Variables.setTimer1(Variables.getTimer2());
+		    			  		    		  }
+		    		  else {
+//		    			  Variables.setSpeed(300);
+			    		  System.out.println("test1");
+
+
+			    		  try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+						}
+
+		    		  }
 //			    	  motorA.setSpeed(Variables.getSpeed());
 //				      motorB.setSpeed(Variables.getSpeed());
 //				      motorA.forward();
@@ -22,18 +40,12 @@ public class NormalDrive  extends Thread{
 //				      motorA.stop();
 //				      motorB.stop();
 //				      Variables.button_pressed = false;
-//			    		
-		    		  Variables.setSpeed(300);
-		    		  Variables.button_pressed = false;
-		    		  Variables.setTimer(System.currentTimeMillis());
-		    		  System.out.println(Variables.getTimer());
-
-
-		    		  try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-					}
+		    		  System.out.println(Variables.getTimer2() - Variables.getTimer1());
+		    		  Variables.setTimer1(Variables.getTimer2());
 		    		  Variables.setSpeed(250);
+		    		  Variables.button_pressed = false;
+		    		  
+		    		  
 	    	}
 		}
 	}

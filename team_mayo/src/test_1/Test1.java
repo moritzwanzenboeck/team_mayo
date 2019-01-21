@@ -24,24 +24,27 @@ public class Test1 {
 		
 		MultithreadingTest mtt = new MultithreadingTest();
 		mtt.start();
-		NormalDrive nd = new NormalDrive();
-		nd.start();
-		DoubleClick dc = new DoubleClick();
-		dc.start();
+//		NormalDrive nd = new NormalDrive();
+//		nd.start();
+//		DoubleClick dc = new DoubleClick();
+//		dc.start();
 		
 		
-	      RegulatedMotor motorA = new EV3MediumRegulatedMotor(MotorPort.A);
-	      RegulatedMotor motorB = new EV3MediumRegulatedMotor(MotorPort.B);
+	      
 	      //SensorModes sensor = new EV3TouchSensor(port);
 	      //SampleProvider touch = sensor.getMode("Touch");
-	      
+	      Variables.motorA.forward();
+	      Variables.motorB.forward();
+
 	      	      
 	      while(true) {
-	    	  motorA.setSpeed(Variables.getSpeed());
-		      motorB.setSpeed(Variables.getSpeed());
-		      motorA.forward();
-		      motorB.forward();
-		      
+	    	  try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+	    	  
+		      		      
 	      }
 	      
 	      	      	      
