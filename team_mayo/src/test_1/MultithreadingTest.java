@@ -22,15 +22,59 @@ public class MultithreadingTest extends Thread {
 				if (!Variables.button_pressed) {
 					Variables.button_pressed = true;
 					Variables.press_counter = 1;
-					Variables.motorA.setSpeed(0);
-					Variables.motorB.setSpeed(0);
-					Variables.button_pressed = false;
+					Variables.Timer1 = System.currentTimeMillis();
+//					Variables.motorA.setSpeed(0);
+//					Variables.motorB.setSpeed(0);
+
+					System.out.println(Variables.press_counter);
 				} else {
 					if (System.currentTimeMillis() < Variables.Timer1 + 300) {
 						Variables.press_counter++;
 						Variables.Timer1 = System.currentTimeMillis();
+						System.out.println(Variables.press_counter);
+						try {
+							Thread.sleep(500);
+						} catch (InterruptedException e) {
+
+						}
+
 					}
 				}
+			} else {
+
+				if (Variables.press_counter == 1 && Variables.button_pressed == true) {
+					System.out.println("hallo1");
+					Variables.motorA.stop();
+					Variables.motorB.stop();
+					try {
+						Thread.sleep(2500);
+					} catch (InterruptedException e) {
+
+					}
+					Variables.motorA.setSpeed(250);
+					Variables.motorB.setSpeed(250);
+					Variables.motorA.forward();
+					Variables.motorB.forward();
+
+				}
+
+				else {
+					if (Variables.press_counter == 2 && Variables.button_pressed == true) {
+						System.out.println("hallo2");
+						Variables.motorA.setSpeed(25);
+						Variables.motorB.setSpeed(25);
+						try {
+							Thread.sleep(1000);
+						} catch (InterruptedException e) {
+
+						}
+						Variables.motorA.setSpeed(250);
+						Variables.motorB.setSpeed(250);
+
+					}
+				}
+				Variables.button_pressed = false;
+				Variables.press_counter = 0;
 			}
 
 		}
