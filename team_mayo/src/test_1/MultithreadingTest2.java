@@ -4,7 +4,7 @@ import lejos.hardware.port.SensorPort;
 import lejos.hardware.sensor.EV3TouchSensor;
 import lejos.hardware.sensor.SensorMode;
 
-public class MultithreadingTest extends Thread {
+public class MultithreadingTest2 extends Thread {
 
 	public void run() {
 
@@ -21,29 +21,20 @@ public class MultithreadingTest extends Thread {
 			if (sample[0] == 1) {
 				if (!Variables.button_pressed) {
 					Variables.button_pressed = true;
-					Variables.press_counter = 1;
 					Variables.Timer1 = System.currentTimeMillis();
-//					Variables.motorA.setSpeed(0);
-//					Variables.motorB.setSpeed(0);
 
 					System.out.println(Variables.press_counter);
-				} else {
-					if (System.currentTimeMillis() < Variables.Timer1 + 300) {
-						Variables.press_counter++;
-						Variables.Timer1 = System.currentTimeMillis();
-						System.out.println(Variables.press_counter);
-						try {
-							Thread.sleep(500);
-						} catch (InterruptedException e) {
+				} 
+			}
+			
+			else {
+				
+				if(Variables.button_pressed == true) {
+					
+					Variables.Timer2 = System.currentTimeMillis();
+					System.out.println(Variables.Timer2-Variables.Timer1);
 
-						}
-
-					}
-				}
-			} else {
-
-				if (Variables.press_counter == 1 && Variables.button_pressed == true) {
-					System.out.println("hallo1");
+				if (Variables.Timer2 - Variables.Timer1 < 500) {
 					Variables.motorA.stop();
 					Variables.motorB.stop();
 					Variables.motorC.forward();
@@ -75,8 +66,7 @@ public class MultithreadingTest extends Thread {
 				}
 
 				else {
-					if (Variables.press_counter == 2 && Variables.button_pressed == true) {
-						System.out.println("hallo2");
+					if (true) {
 						Variables.motorA.setSpeed(25);
 						Variables.motorB.setSpeed(25);
 						try {
@@ -90,10 +80,10 @@ public class MultithreadingTest extends Thread {
 					}
 				}
 				Variables.button_pressed = false;
-				Variables.press_counter = 0;
 			}
 
 		}
 	}
 
+	}
 }

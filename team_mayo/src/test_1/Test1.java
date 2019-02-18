@@ -17,7 +17,7 @@ package test_1;
 public class Test1 {
 	public static void main(String args[]) {
 		
-		MultithreadingTest mtt = new MultithreadingTest();
+		MultithreadingTest2 mtt = new MultithreadingTest2();
 		mtt.start();
 //		NormalDrive nd = new NormalDrive();
 //		nd.start();
