@@ -10,6 +10,7 @@ public class MultithreadingTest2 extends Thread {
 
 		// Definierung und Abfrage des TouchSensors
 
+		@SuppressWarnings("resource")
 		EV3TouchSensor ts = new EV3TouchSensor(SensorPort.S1);
 		SensorMode touch = ts.getTouchMode();
 		float[] sample = new float[touch.sampleSize()];
