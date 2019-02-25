@@ -6,16 +6,29 @@ import lejos.robotics.RegulatedMotor;
 
 public class Variables {
 	
+	// Status des Touch-Sensors
+	
 	public static boolean button_pressed = false;
-	public static int press_counter = 0;
+	
+	// Standartgeschwindigkeit der Motoren
+	
 	private static int speed = 250;
+	
+	// Zwischenzeiten
+	
 	public static long Timer1 = 0;
 	public static long Timer2 = 0;
-	public static RegulatedMotor motorA = new EV3MediumRegulatedMotor(MotorPort.A);
-    public static RegulatedMotor motorB = new EV3MediumRegulatedMotor(MotorPort.B);
-    public static RegulatedMotor motorC	= new EV3MediumRegulatedMotor(MotorPort.C);
-
 	
+	// Motoren
+	// Motor A & B groﬂ:	Fortbewegung
+	// Motor C klein:		Schaufel
+	
+	public static RegulatedMotor motorA = new EV3MediumRegulatedMotor(MotorPort.A);
+	public static RegulatedMotor motorB = new EV3MediumRegulatedMotor(MotorPort.B);
+    
+	public static RegulatedMotor motorC	= new EV3MediumRegulatedMotor(MotorPort.C);
+
+	// Getter-Setter-Methode
 	
 	public static int getSpeed() {
 		return speed;

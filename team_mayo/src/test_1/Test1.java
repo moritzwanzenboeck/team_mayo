@@ -1,6 +1,5 @@
 package test_1;
 
-
 //import lejos.hardware.ev3.LocalEV3;
 //import lejos.hardware.motor.EV3LargeRegulatedMotor;
 //import lejos.hardware.motor.EV3MediumRegulatedMotor;
@@ -16,46 +15,24 @@ package test_1;
 
 public class Test1 {
 	public static void main(String args[]) {
-		
+
+		// Start des Threads
+
 		MultithreadingTest2 mtt = new MultithreadingTest2();
 		mtt.start();
-//		NormalDrive nd = new NormalDrive();
-//		nd.start();
-//		DoubleClick dc = new DoubleClick();
-//		dc.start();
-		
-		
-	      
-	      //SensorModes sensor = new EV3TouchSensor(port);
-	      //SampleProvider touch = sensor.getMode("Touch");
+
 		Variables.motorA.setSpeed(Variables.getSpeed());
 		Variables.motorB.setSpeed(Variables.getSpeed());
 		Variables.motorA.forward();
-	    Variables.motorB.forward();
+		Variables.motorB.forward();
 
-	      	      
-	      while(true) {
-	    	  try {
+		while (true) {
+			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
-				
+
 			}
-	    	  
-		      		      
-	      }
-	      
-	      	      	      
-	      
-	      
-
-		}	      
-	      	      
-	      
-	      
-	      
+		}
 	}
-	
 
-
-
-
+}
