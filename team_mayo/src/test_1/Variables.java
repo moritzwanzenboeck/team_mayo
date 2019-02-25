@@ -9,10 +9,6 @@ public class Variables {
 	// Status des Touch-Sensors
 
 	public static boolean button_pressed = false;
-	
-	// Halt-Wert
-	
-	public static boolean stop = false;
 
 	// Standartgeschwindigkeit der Motoren
 
@@ -24,8 +20,8 @@ public class Variables {
 	public static long Timer2 = 0;
 
 	// Motoren
-	// Motor A & B groﬂ: 	Fortbewegung
-	// Motor C klein: 		Schaufel
+	// Motor A & B groﬂ: Fortbewegung
+	// Motor C klein: Schaufel
 
 	public static RegulatedMotor motorA = new EV3MediumRegulatedMotor(MotorPort.A);
 	public static RegulatedMotor motorB = new EV3MediumRegulatedMotor(MotorPort.B);
