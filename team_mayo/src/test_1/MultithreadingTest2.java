@@ -17,69 +17,78 @@ public class MultithreadingTest2 extends Thread {
 
 		while (true) {
 
-			ts.fetchSample(sample, 0);
-			try {
-				Thread.sleep(50);
-			} catch (InterruptedException e) {
-			}
-			if (sample[0] == 1) {
-				if (!Variables.button_pressed) {
-					Variables.button_pressed = true;
+			if (Variables.stop == true) {
 
-					// erste Zwischenzeit
-
-					Variables.Timer1 = System.currentTimeMillis();
-
+				ts.fetchSample(sample, 0);
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
 				}
-			}
+				if (sample[0] == 1) {
+					if (!Variables.button_pressed) {
+						Variables.button_pressed = true;
 
-			else {
+						// erste Zwischenzeit
 
-				if (Variables.button_pressed == true) {
-
-					// zweite Zwischenzeit
-
-					Variables.Timer2 = System.currentTimeMillis();
-					System.out.println(Variables.Timer2 - Variables.Timer1);
-
-					// Zeitvergleich
-
-					if (Variables.Timer2 - Variables.Timer1 < 500) {
-
-						// Stop und Schaufelbewegung
-
-						Variables.motorA.stop();
-						Variables.motorB.stop();
-						Variables.motorC.forward();
-						Variables.motorC.setSpeed(Variables.getSpeed() / 10);
-						try {
-							Thread.sleep(2500);
-						} catch (InterruptedException e) {
-
-						}
-
-						Variables.motorC.stop();
-						try {
-							Thread.sleep(100);
-						} catch (InterruptedException e) {
-
-						}
-						Variables.motorC.backward();
-						try {
-							Thread.sleep(2500);
-						} catch (InterruptedException e) {
-
-						}
-						Variables.motorC.stop();
-						Variables.motorA.setSpeed(250);
-						Variables.motorB.setSpeed(250);
-						Variables.motorA.backward();
-						Variables.motorB.backward();
+						Variables.Timer1 = System.currentTimeMillis();
 
 					}
+				}
 
-					else {
-						if (true) {
+				else {
+
+					if (Variables.button_pressed == true) {
+
+						// zweite Zwischenzeit
+
+						Variables.Timer2 = System.currentTimeMillis();
+						System.out.println(Variables.Timer2 - Variables.Timer1);
+
+						// Zeitvergleich
+
+						if (Variables.Timer2 - Variables.Timer1 < 500) {
+
+							// Stop und Schaufelbewegung
+
+							Variables.motorA.stop();
+							Variables.motorB.stop();
+							Variables.motorC.forward();
+							Variables.motorC.setSpeed(Variables.getSpeed() / 10);
+							try {
+								Thread.sleep(2500);
+							} catch (InterruptedException e) {
+
+							}
+
+							Variables.motorC.stop();
+							try {
+								Thread.sleep(100);
+							} catch (InterruptedException e) {
+
+							}
+							Variables.motorC.backward();
+							try {
+								Thread.sleep(2500);
+							} catch (InterruptedException e) {
+
+							}
+							Variables.motorC.stop();
+							Variables.motorA.setSpeed(250);
+							Variables.motorB.setSpeed(250);
+							Variables.motorA.backward();
+							Variables.motorB.backward();
+
+						}
+
+						if (Variables.Timer2 - Variables.Timer1 > 5000) {
+
+							Variables.motorA.stop();
+							Variables.motorB.stop();
+							Variables.motorC.stop();
+							Variables.stop = true;
+						}
+
+						else {
 
 							// langsam fahren
 
@@ -94,12 +103,12 @@ public class MultithreadingTest2 extends Thread {
 							Variables.motorB.setSpeed(250);
 
 						}
+						Variables.button_pressed = false;
 					}
-					Variables.button_pressed = false;
+
 				}
-
 			}
-		}
 
+		}
 	}
 }
