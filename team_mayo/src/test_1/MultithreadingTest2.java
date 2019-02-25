@@ -73,8 +73,8 @@ public class MultithreadingTest2 extends Thread {
 						Variables.motorC.stop();
 						Variables.motorA.setSpeed(250);
 						Variables.motorB.setSpeed(250);
-						Variables.motorA.forward();
-						Variables.motorB.forward();
+						Variables.motorA.backward();
+						Variables.motorB.backward();
 
 					}
 
